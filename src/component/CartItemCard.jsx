@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
  import { FaChevronUp, FaChevronDown } from "react-icons/fa";
 import { useDispatch } from 'react-redux';
 import { decrease, increase, removeItem } from "../redux/slice/CartSlice";
@@ -5,7 +6,9 @@ import { decrease, increase, removeItem } from "../redux/slice/CartSlice";
 
 const CartItem = ({ data }) => {
     const {id, img, title, price, amount}= data
-  const dispatch = useDispatch();
+    const dispatch = useDispatch();
+    
+
   return (
     <article className='cart-item border border-yellow-400 m-1'>
         <div className="flex justify-around items-center">
@@ -29,17 +32,20 @@ const CartItem = ({ data }) => {
           
             {/* up/down button  */}
             <div>
-                <button
+          
+          <button
                 className='amount-btn'
                 onClick={() => {
-                    dispatch(increase({ id }));
+                  dispatch(increase(id)); // Pass only the id directly
                 }}
-                >
-            
-                        <FaChevronUp />
-                </button>
+              >
+                <FaChevronUp />
+          </button>
+
+                  
                 <p className='amount'>{amount}</p>
-                <button
+                
+          <button
                 className='amount-btn'
                 onClick={() => {
                     if (amount === 1) {

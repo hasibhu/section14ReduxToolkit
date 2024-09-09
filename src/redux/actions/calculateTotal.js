@@ -1,3 +1,4 @@
+
 export const calculateTotal = (state) => {
     let amount = 0;
     let total = 0;

@@ -1,24 +1,36 @@
 
-import CartItem from './CartItem';
+import CartItem from './CartItemCard';
 import { useDispatch, useSelector } from 'react-redux';
-import store from '../redux/store';
 import { clearCart } from '../redux/slice/CartSlice';
-
-
-
 import { useEffect } from 'react'
 import { calculateTotal } from '../redux/slice/CartSlice'
+import getCartItems from '../redux/slice/GetCartItems';
 
 const CartContainer = () => {
 
     const dispatch = useDispatch()
-    const { cartItems, total, amount } = useSelector((store) => store.cart)
+    const { cartItems, total, amount, isLoading  } = useSelector((store) => store.cart)
     
+  // Fetch cart items on mount
+    useEffect(() => {
+        dispatch(getCartItems());
+    }, [dispatch]);
+
 
   useEffect(() => {
      dispatch(calculateTotal())
   }, [cartItems])
     
+ 
+      if (isLoading) {
+        return (
+            <section className="cart">
+                <header className="text-center">
+                    <h2>Loading...</h2>
+                </header>
+            </section>
+        );
+    }
     
     
 

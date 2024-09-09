@@ -2,9 +2,7 @@
 import './App.css'
 import Navbar from './component/Navbar'
 import CartContainer from './component/CartContainer'
-// import { useDispatch, useSelector } from 'react-redux'
-// import { useEffect } from 'react'
-// import { calculateTotal } from './redux/slice/CartSlice'
+
 
 
 function App() {
@@ -26,8 +24,7 @@ function App() {
 
      
 
-    
-    
+
       
     </>
   )
